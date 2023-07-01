@@ -6,7 +6,7 @@ This is a one stop solution for creating v2 requests, in the most basic format e
 </br>
 ![The Pipeline](https://github.com/yxjat/simple-v2-wrapper/assets/96134951/80ee8257-a2e8-46df-b005-9e6f0069cf48)
 
-> ### Deployed Url:- https://ml-yajat-intern-yajat-8000.demo1.truefoundry.com/predict
+> ### Deployed Url:- https://v2.demo1.truefoundry.com/predict
 
 </br>
 
