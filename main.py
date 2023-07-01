@@ -2,6 +2,7 @@ from pydantic import BaseModel, Field
 from fastapi import FastAPI
 from typing import Dict, Any
 from req import v2
+import json
 
 app = FastAPI()
 
@@ -21,5 +22,6 @@ def predict(request: PredictRequest):
     params = request.parameters
     pipe = request.hf_pipeline
 
-    r = v2(link, input, params, pipe) 
-    return r.json()["outputs"][0]["data"]
+    r = v2(link, input, params, pipe)
+
+    return json.loads(r.json()["outputs"][0]["data"][0])
