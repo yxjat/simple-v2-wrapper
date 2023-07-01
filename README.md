@@ -1,14 +1,14 @@
 # Fast API Wrapper for V2 Inference Protocol
 ---
 This is a one stop solution for creating v2 requests, in the most basic format ever! Simply send in the deployed model urls and your inputs and watch the magic happen. Returns Json formatted output data with interpretable code which makes it even easier to use with almost every huggingface model. 
-&nbsb; \n
-&nbsb; \n
-&nbsb; \n
-&nbsb; \n
-
-
+</br>
+</br>
+</br>
+![The Pipeline](https://github.com/yxjat/simple-v2-wrapper/assets/96134951/80ee8257-a2e8-46df-b005-9e6f0069cf48)
 
 > ### Deployed Url:- https://ml-yajat-intern-yajat-8000.demo1.truefoundry.com/predict
+
+</br>
 
 ## Currently supports the following pipelines:
 ---
@@ -42,6 +42,8 @@ Input Format:
   "parameters":any
 }
 ```
+</br>
+</br>
 
 ### The following script is an example in action!
 
@@ -71,7 +73,8 @@ Output:
 	}
 ]
 ```
-
+</br>
+</br>
 ## Working on localhost"
 
 To get started on your own pc,
@@ -86,6 +89,9 @@ git clone https://github.com/yxjat/simple-v2-wrapper
 uvicorn main:app --host 0.0.0.0 --port 8000
 ```
 And you're all set!
+
+</br>
+</br>
 
 ## Deployed models:
 
