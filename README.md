@@ -1,11 +1,100 @@
-Fast API Wrapper for V2 Inference Protocol
+# Fast API Wrapper for V2 Inference Protocol
 ---
+This is a one stop solution for creating v2 requests, in the most basic format ever! Simply send in the deployed model urls and your inputs and watch the magic happen. Returns Json formatted output data with interpretable code which makes it even easier to use with almost every huggingface model. 
+&nbsb; \n
+&nbsb; \n
+&nbsb; \n
+&nbsb; \n
 
 
 
-1. You can run the fastapi with uvicorn as `uvicorn main:app --host 0.0.0.0 --port 8000`  
-2. Then you can run the test runner as `python test_all.py http://0.0.0.0:8000/predict` - Note the `TASK_TO_URL` contains urls to models hosted internally by Truefoundry
+> ### Deployed Url:- https://ml-yajat-intern-yajat-8000.demo1.truefoundry.com/predict
 
-Finally you can deploy your fastapi app on Truefoundry and re run the test runner as `python test_all.py <YOUR URL>`
+## Currently supports the following pipelines:
+---
+https://huggingface.co/sshleifer/tiny-gpt2
+```bash
+text-generation
+```
 
-> Note the object detection model might take 15-30s to respond
+https://huggingface.co/d4data/biomedical-ner-all/tree/main
+```bash
+token-classification
+```
+
+https://huggingface.co/typeform/distilbert-base-uncased-mnli
+
+```bash
+zero-shot-classification
+```
+
+https://huggingface.co/TahaDouaji/detr-doc-table-detection
+```bash
+object-detection
+```
+
+Input Format:
+```json
+{
+  "hf_pipeline": string,
+  "model_deployed_url": string,
+  "inputs": any,
+  "parameters":any
+}
+```
+
+### The following script is an example in action!
+
+>cUrls can also be used similarly
+
+```python
+import requests
+
+headers = {
+    'accept': 'application/json',
+    'Content-Type': 'application/json',
+}
+
+data = '{"hf_pipeline": "text-generation","model_deployed_url":"https://text-generation-ml-intern-assign.tfy-gcp-standard-usce1.devtest.truefoundry.tech/v2/models/text-generation/infer","inputs": "Hello, how are you today? ","parameters": {"min_new_tokens": 10,"do_sample": true,"temperature": 1.0,"max_new_tokens": 20,"num_return_sequences": 5}}'
+
+response = requests.post('https://ml-yajat-intern-yajat-8000.demo1.truefoundry.com/predict', headers=headers, data=data)
+
+print(response.json())
+```
+
+Output:
+
+```json
+[
+	{
+		"generated_text":"Hello how are you today?PocketProsPros Late Boone� brutality skilletOutside omega Late workshops omega representations predators incarcer WheelsGy PocketGy Pocket653MostOutside representations factors Bend grandchildren praying boils Medicacious Redux mutual omega skillet Pocket predators predators� representations Tre"
+	}
+]
+```
+
+## Working on localhost"
+
+To get started on your own pc,
+
+1. Clone the repo:
+```bash
+git clone https://github.com/yxjat/simple-v2-wrapper
+```
+
+2. Run the uvicorn server
+```bash
+uvicorn main:app --host 0.0.0.0 --port 8000
+```
+And you're all set!
+
+## Deployed models:
+
+```bash
+https://object-intern-yajat.demo1.truefoundry.com
+```
+```bash
+https://textgen-intern-yajat.demo1.truefoundry.com
+```
+
+> Note! the object detection pipeline might take a while to respond (10s)
+
