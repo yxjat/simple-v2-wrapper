@@ -48,6 +48,48 @@ Input Format:
 ### The following script is an example in action!
 
 >cUrls can also be used similarly
+</br>
+Object detection:
+</br>
+
+```python
+import requests
+
+headers = {
+    'accept': 'application/json',
+    'Content-Type': 'application/json',
+}
+
+data = '{ "hf_pipeline": "object-detection","model_deployed_url": "https://object-intern-yajat.demo1.truefoundry.com/v2/models/object/infer", "inputs": "https://www.w3.org/WAI/WCAG22/Techniques/pdf/img/table-word.jpg","parameters": {}}'
+
+response = requests.post('https://v2.demo1.truefoundry.com/predict', headers=headers, data=data)
+
+print(response.json())
+
+```
+</br>
+Output:
+</br>
+
+```json
+[
+	{
+		"score":0.9906801581382751,
+		"label":"table",
+		"box":{
+			"xmin":20,
+			"ymin":54,
+			"xmax":479,
+			"ymax":257
+		}
+	}
+]
+```
+</br>
+</br>
+</br>
+Text Generation:
+</br>
 
 ```python
 import requests
@@ -62,6 +104,7 @@ data = '{"hf_pipeline": "text-generation","model_deployed_url":"https://text-gen
 response = requests.post('https://v2.demo1.truefoundry.com/predict', headers=headers, data=data)
 
 print(response.json())
+
 ```
 
 Output:
